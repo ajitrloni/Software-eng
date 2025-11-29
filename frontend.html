@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mini LinkedIn - Frontend Only</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: Arial; background:#f5f5f5; margin:0; }
+nav { background:#fff; padding:12px; border-bottom:1px solid #ddd; display:none; }
+nav button, nav a { margin-right:10px; }
+.page { display:none; padding:20px; }
+.card{background:#fff;padding:12px;margin-bottom:10px;border-radius:6px;border:1px solid #ddd;}
+input,textarea{width:100%;padding:10px;margin-bottom:10px;}
+button{padding:10px 14px;cursor:pointer;}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR (after login) -->
+<nav id="navbar">
+  <button onclick="showPage('homePage')">Home</button>
+  <button onclick="showPage('usersPage')">People</button>
+  <button onclick="showPage('jobsPage')">Jobs</button>
+  <button onclick="logout()">Logout</button>
+</nav>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="page">
+  <h2>Login</h2>
+  <input placeholder="Email">
+  <input type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+
+  <p>New user? <a href="#" onclick="showPage('registerPage')">Register</a></p>
+  <p>Company? <a href="#" onclick="showPage('companyRegisterPage')">Register Company</a></p>
+</div>
+
+<!-- REGISTER PAGE -->
+<div id="registerPage" class="page">
+  <h2>User Register</h2>
+  <input placeholder="Name">
+  <input placeholder="Email">
+  <input type="password" placeholder="Password">
+  <button onclick="dummyRegister()">Register</button>
+</div>
+
+<!-- COMPANY REGISTER PAGE -->
+<div id="companyRegisterPage" class="page">
+  <h2>Company Register</h2>
+  <input placeholder="Company Name">
+  <input placeholder="Email">
+  <input type="password" placeholder="Password">
+  <button onclick="dummyRegister()">Register Company</button>
+</div>
+
+<!-- HOME PAGE -->
+<div id="homePage" class="page">
+  <h2>Welcome!</h2>
+  <p>This is the frontend-only version of your LinkedIn-like project.</p>
+  <p>No backend required. Navigation works.</p>
+</div>
+
+<!-- USERS PAGE -->
+<div id="usersPage" class="page">
+  <h2>People</h2>
+  <input placeholder="Search people...">
+  <div id="usersList">
+    <div class="card">
+      <b>Demo User 1</b><br>
+      demo1@example.com<br>
+      <button>Connect</button>
+    </div>
+    <div class="card">
+      <b>Demo User 2</b><br>
+      demo2@example.com<br>
+      <button>Connect</button>
+    </div>
+  </div>
+</div>
+
+<!-- JOBS PAGE -->
+<div id="jobsPage" class="page">
+  <h2>Jobs</h2>
+  <div class="card">
+    <h3>Frontend Developer</h3>
+    <p>Company: Demo Corp</p>
+    <button onclick="showPage('jobDetailsPage')">View</button>
+  </div>
+
+  <div class="card">
+    <h3>Backend Developer</h3>
+    <p>Company: Tech Ltd</p>
+    <button onclick="showPage('jobDetailsPage')">View</button>
+  </div>
+</div>
+
+<!-- JOB DETAILS PAGE -->
+<div id="jobDetailsPage" class="page">
+  <h2>Job Details</h2>
+  <p><b>Role:</b> Frontend Developer</p>
+  <p><b>Description:</b> Build UI components</p>
+  <p><b>Skills:</b> HTML, CSS, JS</p>
+  <button>Apply (Demo)</button>
+</div>
+
+<script>
+// SHOW PAGE
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+// SIMULATED LOGIN
+function login(){
+  alert("Login Successful (Frontend Demo Only)");
+  document.getElementById("navbar").style.display = "block";
+  showPage('homePage');
+}
+
+// SIMULATED REGISTER
+function dummyRegister(){
+  alert("Registered (Frontend Demo Only)");
+  showPage('loginPage');
+}
+
+// LOGOUT
+function logout(){
+  alert("Logged out (Frontend Demo Only)");
+  document.getElementById("navbar").style.display = "none";
+  showPage('loginPage');
+}
+
+// START WITH LOGIN PAGE
+showPage('loginPage');
+</script>
+
+</body>
+</html>
